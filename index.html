@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Force Desktop View on Mobile -->
+<meta name="viewport" content="width=1200">
 <title>BVNAB Intelligence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
 }
 
 body{
+ min-width:1200px; /* Prevent mobile shrink */
  height:100vh;
  display:flex;
  flex-direction:column;
@@ -38,6 +40,25 @@ body::before{
  top:10%;
  left:20%;
  opacity:0.3;
+}
+
+/* LOGO */
+.logo{
+ position:absolute;
+ top:20px;
+ left:30px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+}
+
+.logo img{
+ height:45px;
+}
+
+.logo span{
+ font-weight:600;
+ color:#fff;
 }
 
 h1{
@@ -65,8 +86,8 @@ p{
 
 /* Cards */
 .card{
- width:320px;          /* increased from 280px */
- height:250px;         /* increased from 220px */
+ width:320px;
+ height:250px;
  backdrop-filter:blur(10px);
  background:rgba(255,255,255,0.05);
  border-radius:15px;
@@ -79,7 +100,7 @@ p{
  border:1px solid rgba(255,255,255,0.1);
  position:relative;
  overflow:hidden;
- padding:20px;         /* added for better spacing */
+ padding:20px;
 }
 
 /* Hover Glow */
@@ -127,15 +148,58 @@ p{
  opacity:1;
 }
 
+/* CONTACT BUTTON */
+.contact-btn{
+ position:absolute;
+ top:20px;
+ right:30px;
+ padding:10px 18px;
+ border:1px solid #ff1a1a;
+ color:#ff1a1a;
+ border-radius:25px;
+ text-decoration:none;
+ font-size:14px;
+ transition:0.3s;
+}
+
+.contact-btn:hover{
+ background:#ff1a1a;
+ color:#fff;
+}
+
+/* FOOTER */
+.footer{
+ position:absolute;
+ bottom:10px;
+ text-align:center;
+ font-size:12px;
+ color:#777;
+}
+
+.footer span{
+ color:#ff1a1a;
+}
+
 /* Responsive */
 @media(max-width:600px){
  h1{font-size:35px}
  .card{width:90%}
+ .logo{left:15px}
+ .contact-btn{right:15px}
 }
 </style>
 </head>
 
 <body>
+
+<!-- LOGO -->
+<div class="logo">
+  <img src="Screenshot 2026-04-06 103500.png" alt="BVNAB Logo">
+  <span>BVNAB</span>
+</div>
+
+<!-- CONTACT -->
+<a href="contact.html" class="contact-btn">Contact Us</a>
 
 <h1>BVNAB Intelligence</h1>
 <p>The Step Beyond in Intelligence</p>
@@ -148,12 +212,18 @@ p{
     <span>Explore →</span>
   </div>
 
-  <div class="card" onclick="location.href='education.html'">
+  <div class="card" onclick="location.href='stem.html'">
     <h2>Education</h2>
     <p>STEM | Training | Workshops | Innovation</p>
     <span>Explore →</span>
   </div>
 
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 <span>BVNAB Intelligence</span> | Automation • Robotics • AI Vision <br>
+  Pune, Maharashtra | Email: sale@bvnab.in | Contact: +91 9356368018
 </div>
 
 </body>
