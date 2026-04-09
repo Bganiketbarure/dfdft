@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Force Desktop View on Mobile -->
-<meta name="viewport" content="width=1200">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BVNAB Intelligence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -17,105 +16,69 @@
 }
 
 body{
- min-width:1200px; /* Prevent mobile shrink */
- height:100vh;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- background:linear-gradient(135deg,#0a0a0a,#111);
+ background:#0a0a0a;
  color:#fff;
+ overflow-x:hidden;
+}
+
+/* TITLE */
+.main-title{
  text-align:center;
- overflow:hidden;
+ margin-top:60px;
 }
 
-/* Background Glow */
-body::before{
- content:'';
- position:absolute;
- width:400px;
- height:400px;
- background:#ff1a1a;
- filter:blur(150px);
- top:10%;
- left:20%;
- opacity:0.3;
-}
-
-/* LOGO */
-.logo{
- position:absolute;
- top:20px;
- left:30px;
- display:flex;
- align-items:center;
- gap:10px;
-}
-
-.logo img{
- height:45px;
-}
-
-.logo span{
- font-weight:600;
- color:#fff;
-}
-
-h1{
+.main-title h1{
  font-size:50px;
  color:#ff1a1a;
- font-weight:800;
- letter-spacing:1px;
 }
 
-p{
- color:#bbb;
+.main-title p{
+ color:#aaa;
  margin-top:10px;
- margin-bottom:50px;
- font-size:18px;
 }
 
-/* Container */
-.container{
- display:flex;
- gap:40px;
- flex-wrap:wrap;
- justify-content:center;
- z-index:1;
-}
-
-/* Cards */
-.card{
- width:320px;
- height:250px;
- backdrop-filter:blur(10px);
- background:rgba(255,255,255,0.05);
- border-radius:15px;
+/* TREE */
+.tree{
  display:flex;
  flex-direction:column;
- justify-content:center;
  align-items:center;
+ margin-top:60px;
+}
+
+.root{
+ padding:20px 40px;
+ border-radius:15px;
+ background:rgba(255,255,255,0.05);
+ border:1px solid rgba(255,255,255,0.1);
+ font-size:22px;
+ color:#ff1a1a;
+}
+
+.tree-line{
+ width:2px;
+ height:60px;
+ background:#ff1a1a;
+ margin:10px 0;
+}
+
+.branches{
+ display:flex;
+ gap:80px;
+ flex-wrap:wrap;
+ justify-content:center;
+}
+
+/* CARD */
+.card{
+ width:300px;
+ padding:25px;
+ border-radius:15px;
+ background:rgba(255,255,255,0.05);
+ backdrop-filter:blur(10px);
+ border:1px solid rgba(255,255,255,0.1);
  cursor:pointer;
  transition:0.4s;
- border:1px solid rgba(255,255,255,0.1);
- position:relative;
- overflow:hidden;
- padding:20px;
-}
-
-/* Hover Glow */
-.card::before{
- content:'';
- position:absolute;
- width:100%;
- height:100%;
- background:linear-gradient(120deg,transparent,rgba(255,0,0,0.3),transparent);
- top:-100%;
- transition:0.5s;
-}
-
-.card:hover::before{
- top:100%;
+ text-align:center;
 }
 
 .card:hover{
@@ -123,108 +86,320 @@ p{
  box-shadow:0 0 30px rgba(255,0,0,0.5);
 }
 
-/* Text */
 .card h2{
  color:#ff1a1a;
- font-size:22px;
  margin-bottom:10px;
 }
 
 .card p{
  font-size:14px;
  color:#ccc;
+ margin-bottom:10px;
 }
 
-/* Button Effect */
-.card span{
- margin-top:15px;
- font-size:13px;
- color:#ff1a1a;
- opacity:0;
- transition:0.3s;
-}
-
-.card:hover span{
- opacity:1;
-}
-
-/* CONTACT BUTTON */
-.contact-btn{
- position:absolute;
- top:20px;
- right:30px;
- padding:10px 18px;
- border:1px solid #ff1a1a;
- color:#ff1a1a;
- border-radius:25px;
- text-decoration:none;
- font-size:14px;
- transition:0.3s;
-}
-
-.contact-btn:hover{
+.btn{
+ padding:8px 18px;
+ border-radius:20px;
  background:#ff1a1a;
- color:#fff;
+ display:inline-block;
+ font-size:13px;
+}
+
+/* SERVICES */
+.services-section{
+ padding:80px 10%;
+}
+
+.section-title{
+ text-align:center;
+ font-size:32px;
+ color:#ff1a1a;
+ margin:50px 0 30px;
+}
+
+.services-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:25px;
+}
+
+.service-card{
+ background:rgba(255,255,255,0.05);
+ border:1px solid rgba(255,255,255,0.1);
+ padding:25px;
+ border-radius:15px;
+ transition:0.4s;
+ cursor:pointer;
+}
+
+.service-card:hover{
+ transform:translateY(-10px);
+ box-shadow:0 0 25px rgba(255,0,0,0.5);
+}
+
+.service-card h3{
+ color:#ff1a1a;
+ margin-bottom:10px;
+ font-size:18px;
+}
+
+.service-card p{
+ font-size:14px;
+ color:#ccc;
+}
+
+.service-card.edu{
+ border:1px solid rgba(255,0,0,0.3);
+}
+
+/* GUIDE */
+.guide{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ display:flex;
+ align-items:center;
+ gap:15px;
+ z-index:1000;
+}
+
+.character{
+ width:80px;
+ height:80px;
+ background:#222;
+ border-radius:50%;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ box-shadow:0 0 20px rgba(255,0,0,0.5);
+}
+
+.eyes{
+ width:30px;
+ height:6px;
+ background:#fff;
+ border-radius:10px;
+ margin:auto;
+ margin-bottom:5px;
+}
+
+.mouth{
+ width:20px;
+ height:6px;
+ background:#ff1a1a;
+ border-radius:10px;
+ animation:talk 0.4s infinite alternate;
+}
+
+@keyframes talk{
+ from{height:5px;}
+ to{height:12px;}
+}
+
+.speech-box{
+ background:#111;
+ padding:10px 15px;
+ border-radius:10px;
+ max-width:200px;
+ font-size:13px;
+ border:1px solid rgba(255,255,255,0.1);
+}
+
+/* POINTER */
+.pointer{
+ position:absolute;
+ width:20px;
+ height:20px;
+ border-radius:50%;
+ background:#ff1a1a;
+ box-shadow:0 0 15px red;
+ display:none;
+ animation:pointAnim 1s infinite;
+}
+
+@keyframes pointAnim{
+ 0%{transform:scale(1);}
+ 50%{transform:scale(1.5);}
+ 100%{transform:scale(1);}
 }
 
 /* FOOTER */
 .footer{
- position:absolute;
- bottom:10px;
  text-align:center;
- font-size:12px;
+ padding:20px;
  color:#777;
+ margin-top:50px;
 }
 
-.footer span{
- color:#ff1a1a;
-}
-
-/* Responsive */
-@media(max-width:600px){
- h1{font-size:35px}
- .card{width:90%}
- .logo{left:15px}
- .contact-btn{right:15px}
+/* MOBILE */
+@media(max-width:768px){
+ .branches{
+   flex-direction:column;
+   gap:30px;
+ }
+ .main-title h1{
+   font-size:36px;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGO -->
-<div class="logo">
-  <img src="Screenshot 2026-04-06 103500.png" alt="BVNAB Logo">
-  <span>BVNAB</span>
+<!-- TITLE -->
+<div class="main-title">
+ <h1>BVNAB Intelligence</h1>
+ <p>The Step Beyond in Intelligence</p>
 </div>
 
-<!-- CONTACT -->
-<a href="contact.html" class="contact-btn">Contact Us</a>
+<!-- TREE -->
+<div class="tree">
+ <div class="root">BVNAB INTELLIGENCE</div>
+ <div class="tree-line"></div>
 
-<h1>BVNAB Intelligence</h1>
-<p>The Step Beyond in Intelligence</p>
+ <div class="branches">
+   <div class="card">
+     <h2>BVNAB INDUSTRY</h2>
+     <p>Automation | Robotics | IIOT | AI Vision</p>
+     <div class="btn">Explore</div>
+   </div>
 
-<div class="container">
-
-  <div class="card" onclick="location.href='industry.html'">
-    <h2>Industry</h2>
-    <p>Automation | Robotics | IIOT | AI Vision</p>
-    <span>Explore →</span>
-  </div>
-
-  <div class="card" onclick="location.href='stem.html'">
-    <h2>Education</h2>
-    <p>STEM | Training | Workshops | Innovation</p>
-    <span>Explore →</span>
-  </div>
-
+   <div class="card">
+     <h2>BVNAB EDUCATION</h2>
+     <p>STEM | Training | Workshops | Innovation</p>
+     <div class="btn">Explore</div>
+   </div>
+ </div>
 </div>
+
+<!-- SERVICES -->
+<section class="services-section">
+
+<h2 class="section-title">Industry Services</h2>
+<div class="services-grid">
+<div class="service-card"><h3>Machine Automation</h3></div>
+<div class="service-card"><h3>PLC / SCADA</h3></div>
+<div class="service-card"><h3>Installation</h3></div>
+<div class="service-card"><h3>Power Panels</h3></div>
+<div class="service-card"><h3>Turnkey Projects</h3></div>
+<div class="service-card"><h3>Software Dev</h3></div>
+<div class="service-card"><h3>Consultancy</h3></div>
+<div class="service-card"><h3>IIOT</h3></div>
+<div class="service-card"><h3>Robotics</h3></div>
+<div class="service-card"><h3>Vision Systems</h3></div>
+</div>
+
+<h2 class="section-title">Education Programs</h2>
+<div class="services-grid">
+<div class="service-card edu"><h3>Summer Programs</h3></div>
+<div class="service-card edu"><h3>STEM Training</h3></div>
+<div class="service-card edu"><h3>Workshops</h3></div>
+<div class="service-card edu"><h3>Industry Practicals</h3></div>
+<div class="service-card edu"><h3>Learning Kits</h3></div>
+<div class="service-card edu"><h3>3D Printing</h3></div>
+<div class="service-card edu"><h3>Prototyping</h3></div>
+<div class="service-card edu"><h3>Internships</h3></div>
+</div>
+
+</section>
+
+<!-- GUIDE -->
+<div class="guide">
+  <div class="character">
+    <div>
+      <div class="eyes"></div>
+      <div class="mouth"></div>
+    </div>
+  </div>
+  <div class="speech-box">
+    <p id="speech-text"></p>
+  </div>
+</div>
+
+<div class="pointer" id="pointer"></div>
 
 <!-- FOOTER -->
-<div class="footer">
-  © 2026 <span>BVNAB Intelligence</span> | Automation • Robotics • AI Vision <br>
-  Pune, Maharashtra | Email: sale@bvnab.in | Contact: +91 9356368018
-</div>
+<div class="footer">© 2026 BVNAB Intelligence</div>
+
+<script>
+const textElement = document.getElementById("speech-text");
+const pointer = document.getElementById("pointer");
+const cards = document.querySelectorAll(".card");
+
+let currentMode = "auto"; // auto / industry / education
+
+const messages = [
+  "Hello 👋 We are BVNAB Intelligence",
+  "Are you from Industry or Student?",
+  "Click your path below 👇"
+];
+
+let msgIndex = 0;
+let charIndex = 0;
+
+/* TYPE EFFECT */
+function typeEffect(){
+  if(charIndex < messages[msgIndex].length){
+    textElement.innerHTML += messages[msgIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeEffect, 40);
+  } else {
+    setTimeout(nextMessage, 2000);
+  }
+}
+
+/* NEXT MESSAGE */
+function nextMessage(){
+  textElement.innerHTML = "";
+  charIndex = 0;
+  msgIndex++;
+
+  if(msgIndex >= messages.length){
+    msgIndex = 1; // loop from second message
+  }
+
+  typeEffect();
+}
+
+/* POINTER FUNCTION */
+function movePointer(targetCard){
+  const rect = targetCard.getBoundingClientRect();
+  pointer.style.display = "block";
+  pointer.style.top = rect.top + window.scrollY + "px";
+  pointer.style.left = rect.left + rect.width/2 + "px";
+}
+
+/* AUTO LOOP POINTER */
+function autoGuide(){
+  if(currentMode === "auto"){
+    movePointer(cards[0]); // Industry
+    setTimeout(()=>{
+      if(currentMode === "auto"){
+        movePointer(cards[1]); // Education
+      }
+    }, 2000);
+  }
+
+  setTimeout(autoGuide, 4000);
+}
+
+/* CLICK EVENTS */
+cards[0].addEventListener("click", ()=>{
+  currentMode = "industry";
+  movePointer(cards[0]);
+  textElement.innerHTML = "Great! Exploring Industry Services 🚀";
+});
+
+cards[1].addEventListener("click", ()=>{
+  currentMode = "education";
+  movePointer(cards[1]);
+  textElement.innerHTML = "Awesome! Start Learning with Us 🎓";
+});
+
+/* START */
+typeEffect();
+autoGuide();
+</script>
 
 </body>
 </html>
