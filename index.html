@@ -241,6 +241,49 @@ body{
    font-size:36px;
  }
 }
+ /* SCROLL INDICATOR */
+.scroll-indicator{
+ position:fixed;
+ left:20px;
+ top:50%;
+ transform:translateY(-50%);
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ cursor:pointer;
+ z-index:999;
+ color:#aaa;
+ font-size:12px;
+ letter-spacing:2px;
+}
+
+.scroll-indicator span{
+ writing-mode:vertical-rl;
+ transform:rotate(180deg);
+ margin-bottom:10px;
+}
+
+/* ARROW */
+.arrow{
+ width:15px;
+ height:15px;
+ border-right:2px solid #ff1a1a;
+ border-bottom:2px solid #ff1a1a;
+ transform:rotate(45deg);
+ animation:scrollAnim 1.5s infinite;
+}
+
+/* ANIMATION */
+@keyframes scrollAnim{
+ 0%{transform:translateY(0) rotate(45deg); opacity:0.3;}
+ 50%{transform:translateY(10px) rotate(45deg); opacity:1;}
+ 100%{transform:translateY(0) rotate(45deg); opacity:0.3;}
+}
+
+/* HOVER */
+.scroll-indicator:hover{
+ color:#ff1a1a;
+}
 </style>
 </head>
 
@@ -252,6 +295,12 @@ body{
  <p>The Step Beyond in Intelligence</p>
 </div>
 
+ <!-- SCROLL INDICATOR -->
+<div class="scroll-indicator" onclick="scrollToServices()">
+  <span>Scroll</span>
+  <div class="arrow"></div>
+</div>
+ 
 <!-- TREE -->
 <div class="tree">
  <div class="root">BVNAB INTELLIGENCE</div>
@@ -399,6 +448,14 @@ cards[1].addEventListener("click", ()=>{
 /* START */
 typeEffect();
 autoGuide();
+
+
+function scrollToServices(){
+  document.querySelector('.services-section').scrollIntoView({
+    behavior:'smooth'
+  });
+}
+
 </script>
 
 </body>
