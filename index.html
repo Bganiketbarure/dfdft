@@ -3,460 +3,539 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BVNAB Intelligence</title>
+<title>BVNAB Intelligence | Industry 4.0 → 5.0 AI Automation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
- margin:0;
- padding:0;
- box-sizing:border-box;
- font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
- background:#0a0a0a;
- color:#fff;
- overflow-x:hidden;
+  background:#0a0a0a;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-/* TITLE */
-.main-title{
- text-align:center;
- margin-top:60px;
+/* BACKGROUND */
+.bg{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle,#111,#000);
+  z-index:-2;
 }
 
-.main-title h1{
- font-size:50px;
- color:#ff1a1a;
+.orb{
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:0.4;
+  animation:float 8s infinite;
 }
 
-.main-title p{
- color:#aaa;
- margin-top:10px;
-}
- 
-/* TREE */
-.tree{
- display:flex;
- flex-direction:column;
- align-items:center;
- margin-top:60px;
+.orb1{background:#ff0033;top:10%;left:10%;}
+.orb2{background:#00ffff;bottom:10%;right:10%;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-40px);}
 }
 
-.root{
- padding:20px 40px;
- border-radius:15px;
- background:rgba(255,255,255,0.05);
- border:1px solid rgba(255,255,255,0.1);
- font-size:22px;
- color:#ff1a1a;
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 50px;
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
 
-.tree-line{
- width:2px;
- height:60px;
- background:#ff1a1a;
- margin:10px 0;
+nav h2{color:#ff0033;}
+nav ul{display:flex;gap:18px;list-style:none;flex-wrap:wrap;}
+nav a{color:#fff;text-decoration:none;font-size:14px;}
+nav a:hover{color:#00ffff;}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-.branches{
- display:flex;
- gap:80px;
- flex-wrap:wrap;
- justify-content:center;
+.hero h1{
+  font-size:50px;
+  background:linear-gradient(90deg,#ff0033,#00ffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-/* CARD */
-.card{
- width:300px;
- padding:25px;
- border-radius:15px;
- background:rgba(255,255,255,0.05);
- backdrop-filter:blur(10px);
- border:1px solid rgba(255,255,255,0.1);
- cursor:pointer;
- transition:0.4s;
- text-align:center;
-}
-
-.card:hover{
- transform:translateY(-10px) scale(1.05);
- box-shadow:0 0 30px rgba(255,0,0,0.5);
-}
-
-.card h2{
- color:#ff1a1a;
- margin-bottom:10px;
-}
-
-.card p{
- font-size:14px;
- color:#ccc;
- margin-bottom:10px;
+#typing{
+  margin-top:20px;
+  color:#aaa;
+  max-width:850px;
+  min-height:40px;
 }
 
 .btn{
- padding:8px 18px;
- border-radius:20px;
- background:#ff1a1a;
- display:inline-block;
- font-size:13px;
+  margin-top:25px;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:#ff0033;
+  color:#fff;
+  cursor:pointer;
 }
 
-/* SERVICES */
-.services-section{
- padding:80px 10%;
+/* SECTIONS */
+section{
+  padding:80px 60px;
 }
 
-.section-title{
- text-align:center;
- font-size:32px;
- color:#ff1a1a;
- margin:50px 0 30px;
+h2{
+  text-align:center;
+  margin-bottom:20px;
 }
 
-.services-grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:25px;
+p{
+  text-align:center;
+  color:#aaa;
+  max-width:900px;
+  margin:auto;
 }
 
-.service-card{
- background:rgba(255,255,255,0.05);
- border:1px solid rgba(255,255,255,0.1);
- padding:25px;
- border-radius:15px;
- transition:0.4s;
- cursor:pointer;
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:30px;
 }
 
-.service-card:hover{
- transform:translateY(-10px);
- box-shadow:0 0 25px rgba(255,0,0,0.5);
+.card{
+  padding:20px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  text-align:center;
+  transition:0.3s;
 }
 
-.service-card h3{
- color:#ff1a1a;
- margin-bottom:10px;
- font-size:18px;
+.card:hover{
+  transform:scale(1.05);
+  background:rgba(255,0,51,0.2);
 }
 
-.service-card p{
- font-size:14px;
- color:#ccc;
+/* ROADMAP */
+.timeline{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-top:30px;
 }
 
-.service-card.edu{
- border:1px solid rgba(255,0,0,0.3);
+.step{
+  text-align:center;
+  flex:1;
+  min-width:150px;
 }
 
-/* GUIDE */
-.guide{
- position:fixed;
- bottom:20px;
- right:20px;
- display:flex;
- align-items:center;
- gap:15px;
- z-index:1000;
+.dot{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  border:2px solid #00ffff;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#00ffff;
 }
 
-.character{
- width:80px;
- height:80px;
- background:#222;
- border-radius:50%;
- display:flex;
- justify-content:center;
- align-items:center;
- box-shadow:0 0 20px rgba(255,0,0,0.5);
+/* CLIENTS */
+.client-box{
+  background:rgba(255,255,255,0.05);
+  padding:15px;
+  margin:10px;
+  border-radius:10px;
+  text-align:center;
 }
 
-.eyes{
- width:30px;
- height:6px;
- background:#fff;
- border-radius:10px;
- margin:auto;
- margin-bottom:5px;
+/* CONTACT */
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
 }
 
-.mouth{
- width:20px;
- height:6px;
- background:#ff1a1a;
- border-radius:10px;
- animation:talk 0.4s infinite alternate;
+/* CHAT BOT */
+.bot{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:65px;
+  height:65px;
+  background:#ff0033;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
 }
 
-@keyframes talk{
- from{height:5px;}
- to{height:12px;}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+  100%{transform:scale(1);}
 }
 
-.speech-box{
- background:#111;
- padding:10px 15px;
- border-radius:10px;
- max-width:200px;
- font-size:13px;
- border:1px solid rgba(255,255,255,0.1);
+.chat{
+  position:fixed;
+  bottom:100px;
+  right:20px;
+  width:320px;
+  height:400px;
+  background:#111;
+  border-radius:12px;
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
 }
 
-/* POINTER */
-.pointer{
- position:absolute;
- width:20px;
- height:20px;
- border-radius:50%;
- background:#ff1a1a;
- box-shadow:0 0 15px red;
- display:none;
- animation:pointAnim 1s infinite;
+.chat-header{
+  background:#ff0033;
+  padding:10px;
+  text-align:center;
 }
 
-@keyframes pointAnim{
- 0%{transform:scale(1);}
- 50%{transform:scale(1.5);}
- 100%{transform:scale(1);}
+.chat-body{
+  flex:1;
+  padding:10px;
+  font-size:13px;
+  overflow-y:auto;
+}
+
+.chat-input{
+  display:flex;
+}
+
+.chat-input input{
+  flex:1;
+  padding:10px;
+}
+
+.chat-input button{
+  background:#ff0033;
+  color:#fff;
+  border:none;
+  padding:10px;
 }
 
 /* FOOTER */
-.footer{
- text-align:center;
- padding:20px;
- color:#777;
- margin-top:50px;
+footer{
+  text-align:center;
+  padding:30px;
+  background:#000;
+  color:#777;
 }
 
-/* MOBILE */
-@media(max-width:768px){
- .branches{
-   flex-direction:column;
-   gap:30px;
- }
- .main-title h1{
-   font-size:36px;
- }
-}
- /* SCROLL INDICATOR */
-.scroll-indicator{
- position:fixed;
- left:20px;
- top:50%;
- transform:translateY(-50%);
- display:flex;
- flex-direction:column;
- align-items:right;
- cursor:pointer;
- z-index:999;
- color:#aaa;
- font-size:12px;
- letter-spacing:2px;
+#stats .card{
+  text-align:center;
+  padding:30px;
 }
 
-.scroll-indicator span{
- writing-mode:vertical-rl;
- transform:rotate(180deg);
- margin-bottom:10px;
-}
-
-/* ARROW */
-.arrow{
- width:20px;
- height:20px;
- border-right:2px solid #ff1a1a;
- border-bottom:2px solid #ff1a1a;
- transform:rotate(45deg);
- animation:scrollAnim 1.5s infinite;
-}
-
-/* ANIMATION */
-@keyframes scrollAnim{
- 0%{transform:translateY(0) rotate(45deg); opacity:0.3;}
- 50%{transform:translateY(10px) rotate(45deg); opacity:1;}
- 100%{transform:translateY(0) rotate(45deg); opacity:0.3;}
-}
-
-/* HOVER */
-.scroll-indicator:hover{
- color:#ff1a1a;
+#stats h1{
+  font-size:45px;
+  color:#00ffff;
+  margin-bottom:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TITLE -->
-<div class="main-title">
- <h1>BVNAB Intelligence</h1>
- <p>The Step Beyond in Intelligence</p>
-</div>
+<div class="bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
- <!-- SCROLL INDICATOR -->
-<div class="scroll-indicator" onclick="scrollToServices()">
-  <span>Scroll</span>
-  <div class="arrow"></div>
-</div>
- 
-<!-- TREE -->
-<div class="tree">
- <div class="root">BVNAB INTELLIGENCE</div>
- <div class="tree-line"></div>
+<!-- NAV -->
+<nav>
+<h2>BVNAB INTELLIGENCE</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
 
- <div class="branches">
-   <div class="card">
-     <h2>BVNAB INDUSTRY</h2>
-     <p>Automation | Robotics | IIOT | AI Vision</p>
-     <div class="btn">Explore</div>
-   </div>
+<li><a href="#clients">Clients</a></li>
+<li><a href="#collab">Collaboration</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-   <div class="card">
-     <h2>BVNAB EDUCATION</h2>
-     <p>STEM | Training | Workshops | Innovation</p>
-     <div class="btn">Explore</div>
-   </div>
- </div>
-</div>
-
-<!-- SERVICES -->
-<section class="services-section">
-
-<h2 class="section-title">Industry Services</h2>
-<div class="services-grid">
-<div class="service-card"><h3>Machine Automation</h3></div>
-<div class="service-card"><h3>PLC / SCADA</h3></div>
-<div class="service-card"><h3>Installation</h3></div>
-<div class="service-card"><h3>Power Panels</h3></div>
-<div class="service-card"><h3>Turnkey Projects</h3></div>
-<div class="service-card"><h3>Software Dev</h3></div>
-<div class="service-card"><h3>Consultancy</h3></div>
-<div class="service-card"><h3>IIOT</h3></div>
-<div class="service-card"><h3>Robotics</h3></div>
-<div class="service-card"><h3>Vision Systems</h3></div>
-</div>
-
-<h2 class="section-title">Education Programs</h2>
-<div class="services-grid">
-<div class="service-card edu"><h3>Summer Programs</h3></div>
-<div class="service-card edu"><h3>STEM Training</h3></div>
-<div class="service-card edu"><h3>Workshops</h3></div>
-<div class="service-card edu"><h3>Industry Practicals</h3></div>
-<div class="service-card edu"><h3>Learning Kits</h3></div>
-<div class="service-card edu"><h3>3D Printing</h3></div>
-<div class="service-card edu"><h3>Prototyping</h3></div>
-<div class="service-card edu"><h3>Internships</h3></div>
-</div>
-
+<!-- HERO -->
+<section class="hero">
+<h1>Tradiational → Industry 4.0 → 5.0 AI Automation</h1>
+<div id="typing"></div>
+<button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+Explore Solutions
+</button>
 </section>
 
-<!-- GUIDE -->
-<div class="guide">
-  <div class="character">
-    <div>
-      <div class="eyes"></div>
-      <div class="mouth"></div>
-    </div>
-  </div>
-  <div class="speech-box">
-    <p id="speech-text"></p>
-  </div>
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+<p>
+We transform traditional industries into Industry 4.0 smart factories and prepare them for Industry 5.0 AI-human collaboration systems.
+</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2>Services</h2>
+<div class="grid">
+<div class="card">AI Vision</div>
+<div class="card">PLC / SCADA</div>
+<div class="card">Robotics</div>
+<div class="card">Hydraulics</div>
+<div class="card">Pneumatics</div>
+<div class="card">IIoT Systems</div>
+</div>
+</section>
+<!-- STATS / PROJECTION METER -->
+
+
+
+<!-- CLIENTS -->
+<section id="clients">
+<h2>Our Clients</h2>
+<div class="grid">
+<div class="client-box">Manufacturing Industry</div>
+<div class="client-box">Poultry Automation</div>
+<div class="client-box">Automobile Sector</div>
+<div class="client-box">Custom OEM Projects</div>
+</div>
+</section>
+
+<!-- CHAT BOT -->
+<div class="bot" onclick="toggleChat()">🤖</div>
+
+<div class="chat" id="chat">
+<div class="chat-header">BVNAB AI Guide</div>
+<div class="chat-body" id="chatBody">
+Hi 👋 I can explain:<br>
+• Manual Industry<br>
+• Industry 4.0<br>
+• Industry 5.0
+</div>
+<div class="chat-input">
+<input id="msg" placeholder="Ask...">
+<button onclick="reply()">Send</button>
+</div>
 </div>
 
-<div class="pointer" id="pointer"></div>
 
-<!-- FOOTER -->
-<div class="footer">© 2026 BVNAB Intelligence</div>
+  <footer style="background:#000;padding:40px 20px;color:#ccc;">
 
+  <!-- COMPANY NAME -->
+  <div style="text-align:center;margin-bottom:20px;">
+    <h2 style="color:#ff0033;margin-bottom:5px;">BVNAB INTELLIGENCE</h2>
+    <p style="font-size:14px;">Industry 4.0 → Industry 5.0 AI Automation Company</p>
+  </div>
+
+  
 <script>
-const textElement = document.getElementById("speech-text");
-const pointer = document.getElementById("pointer");
-const cards = document.querySelectorAll(".card");
 
-let currentMode = "auto"; // auto / industry / education
+/* CHAT TOGGLE */
+function toggleChat(){
+  let c=document.getElementById("chat");
+  c.style.display=c.style.display==="flex"?"none":"flex";
+}
 
-const messages = [
-  "Hello 👋 We are BVNAB Intelligence",
-  "Are you from Industry or Student?",
-  "Click your path below 👇"
+/* CHAT LOGIC */
+function reply(){
+  let msg=document.getElementById("msg");
+  let body=document.getElementById("chatBody");
+
+  let text=msg.value.toLowerCase();
+  let res="";
+
+  if(text.includes("manual")){
+    res="Manual = Traditional industries without automation.";
+  }
+  else if(text.includes("4")){
+    res="Industry 4.0 = Smart automation using AI, PLC, IoT.";
+  }
+  else if(text.includes("5")){
+    res="Industry 5.0 = Human + AI collaboration systems.";
+  }
+  else{
+    res="Ask me about Manual, 4.0 or 5.0.";
+  }
+
+  body.innerHTML += "<br><br><b>You:</b> "+msg.value+"<br><b>AI:</b> "+res;
+  msg.value="";
+}
+
+/* TYPING */
+const texts=[
+"Transforming Traditional Industries...",
+"Upgrading to Industry 4.0...",
+"Preparing for Industry 5.0...",
+"Human + AI Industrial Future..."
 ];
 
-let msgIndex = 0;
-let charIndex = 0;
+let i=0,j=0;
 
-/* TYPE EFFECT */
-function typeEffect(){
-  if(charIndex < messages[msgIndex].length){
-    textElement.innerHTML += messages[msgIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(typeEffect, 40);
-  } else {
-    setTimeout(nextMessage, 2000);
-  }
-}
+function type(){
+  let t=texts[i];
+  document.getElementById("typing").innerHTML=t.substring(0,j);
 
-/* NEXT MESSAGE */
-function nextMessage(){
-  textElement.innerHTML = "";
-  charIndex = 0;
-  msgIndex++;
-
-  if(msgIndex >= messages.length){
-    msgIndex = 1; // loop from second message
+  j++;
+  if(j>t.length){
+    j=0;
+    i=(i+1)%texts.length;
   }
 
-  typeEffect();
+  setTimeout(type,70);
 }
 
-/* POINTER FUNCTION */
-function movePointer(targetCard){
-  const rect = targetCard.getBoundingClientRect();
-  pointer.style.display = "block";
-  pointer.style.top = rect.top + window.scrollY + "px";
-  pointer.style.left = rect.left + rect.width/2 + "px";
-}
+type();
 
-/* AUTO LOOP POINTER */
-function autoGuide(){
-  if(currentMode === "auto"){
-    movePointer(cards[0]); // Industry
-    setTimeout(()=>{
-      if(currentMode === "auto"){
-        movePointer(cards[1]); // Education
-      }
-    }, 2000);
-  }
+// COUNTER ANIMATION
+const counters = document.querySelectorAll('.count');
 
-  setTimeout(autoGuide, 4000);
-}
+counters.forEach(counter => {
+  counter.innerText = "0";
 
-/* CLICK EVENTS */
-cards[0].addEventListener("click", ()=>{
-  currentMode = "industry";
-  movePointer(cards[0]);
-  textElement.innerHTML = "Great! Exploring Industry Services 🚀";
+  const updateCounter = () => {
+    const target = +counter.getAttribute('data-target');
+    const c = +counter.innerText;
+
+    const increment = target / 80;
+
+    if(c < target){
+      counter.innerText = Math.ceil(c + increment);
+      setTimeout(updateCounter, 30);
+    } else {
+      counter.innerText = target;
+    }
+  };
+
+  updateCounter();
 });
+</script>
+<!-- FLOATING CONTACT BUTTONS -->
 
-cards[1].addEventListener("click", ()=>{
-  currentMode = "education";
-  movePointer(cards[1]);
-  textElement.innerHTML = "Awesome! Start Learning with Us 🎓";
-});
+<style>
+.fab-container{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:9999;
+}
 
-/* START */
-typeEffect();
-autoGuide();
+/* MAIN BUTTON */
+.fab-main{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#ff0033;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+}
 
+/* SMALL BUTTONS */
+.fab-item{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#111;
+  border:1px solid #333;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  transition:0.3s;
+}
 
-function scrollToServices(){
-  document.querySelector('.services-section').scrollIntoView({
-    behavior:'smooth'
+.fab-item:hover{
+  transform:scale(1.1);
+}
+
+/* TOOLTIP */
+.fab-item span{
+  position:absolute;
+  left:60px;
+  background:#000;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:12px;
+  white-space:nowrap;
+  display:none;
+  border:1px solid #333;
+}
+
+.fab-item:hover span{
+  display:block;
+}
+</style>
+
+<div class="fab-container">
+
+  <!-- MAIN ICON -->
+  <div class="fab-main" onclick="toggleFab()">⚡</div>
+
+  <!-- CALL -->
+  <a href="tel:+919356368018" class="fab-item" id="callBtn">
+    📞
+    <span>Call: +91 9356368018</span>
+  </a>
+
+  <!-- EMAIL -->
+  <a href="mailto:sales@bvnab.in" class="fab-item" id="mailBtn">
+    ✉️
+    <span>Email: sales@bvnab.in</span>
+  </a>
+
+  <!-- WHATSAPP (optional future ready) -->
+  <a href="https://wa.me/919356368018" target="_blank" class="fab-item">
+    💬
+    <span>WhatsApp Chat</span>
+  </a>
+
+</div>
+
+<script>
+function toggleFab(){
+  let items=document.querySelectorAll('.fab-item');
+  items.forEach(el=>{
+    if(el.style.display==="none"){
+      el.style.display="flex";
+    }else{
+      el.style.display="flex";
+    }
   });
 }
-
 </script>
-
 </body>
 </html>
