@@ -277,6 +277,14 @@ p{
     max-width:250px;
   }
 }
+#fy-dashboard .card h3{
+  color:#ff0033;
+  margin-bottom:10px;
+}
+
+#revenue{
+  letter-spacing:2px;
+}
 </style>
 </head>
 
@@ -292,6 +300,7 @@ p{
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
 <li><a href="#clients">Clients</a></li>
+<li><a href="#fy-dashboard">F.Y Dashboard</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
@@ -333,7 +342,42 @@ We transform manual and traditional industries into advanced Industry 4.0 smart 
 <div class="card">Premium Transmission</div>
 </div>
 </section>
+<section id="fy-dashboard">
+<h2>F.Y. 2026–2027 Work Projection</h2>
 
+<p>Live overview of execution, pipeline, and company status.</p>
+
+<!-- LIVE METERS -->
+<div class="grid">
+
+  <div class="card">
+    <h3>⚙️ Ongoing Execution</h3>
+    <h1 class="count" data-target="1">0</h1>
+  </div>
+
+  <div class="card">
+    <h3>📦 Projects in Pipeline</h3>
+    <h1 class="count" data-target="4">0</h1>
+  </div>
+
+  <div class="card">
+    <h3>✅ Projects Delivered</h3>
+    <h1 class="count" data-target="0">0</h1>
+  </div>
+
+</div>
+
+<!-- CURRENT MONTH STATUS -->
+<div class="card" style="margin-top:40px;">
+  <h3 style="color:#00ffff;">📅 Current Month: April 2026</h3>
+  <p>Status: <b style="color:#ff0033;">Accepting New Projects</b></p>
+  <p>Execution: 1 Project Running</p>
+  <p>Projects in Pipeline : 4</p>
+</div>
+
+
+
+</section>
 <section id="contact">
 <h2>Contact Us</h2>
 <p>Reach out for automation solutions or collaborations.</p>
@@ -402,6 +446,40 @@ function type(){
   setTimeout(type,70);
 }
 type();
+// UNIVERSAL COUNTER (works for all numbers)
+const counters = document.querySelectorAll('.count');
+
+counters.forEach(counter => {
+
+  const target = +counter.getAttribute('data-target');
+  let count = 0;
+
+  const speed = target / 100; // controls animation speed
+
+  function update(){
+    if(count < target){
+      count += speed;
+      counter.innerText = counter.innerText.includes("₹")
+        ? "₹" + Math.floor(count).toLocaleString()
+        : Math.floor(count);
+
+      setTimeout(update, 20); // ~2 sec animation
+    } else {
+      counter.innerText = counter.innerText.includes("₹")
+        ? "₹" + target.toLocaleString()
+        : target;
+    }
+  }
+
+  // detect ₹ automatically
+  if(counter.innerText.includes("₹")){
+    counter.innerText = "₹0";
+  } else {
+    counter.innerText = "0";
+  }
+
+  update();
+});
 </script>
 
 </body>
