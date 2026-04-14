@@ -13,7 +13,6 @@
 body{
   background:#0a0a0a;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* BACKGROUND */
@@ -27,8 +26,8 @@ body{
 
 .orb{
   position:absolute;
-  width:220px;
-  height:220px;
+  width:200px;
+  height:200px;
   border-radius:50%;
   filter:blur(70px);
   opacity:0.4;
@@ -47,7 +46,8 @@ body{
 nav{
   display:flex;
   justify-content:space-between;
-  padding:20px 50px;
+  align-items:center;
+  padding:15px 40px;
   position:fixed;
   width:100%;
   top:0;
@@ -57,9 +57,26 @@ nav{
 }
 
 nav h2{color:#ff0033;}
-nav ul{display:flex;gap:18px;list-style:none;flex-wrap:wrap;}
-nav a{color:#fff;text-decoration:none;font-size:14px;}
+
+nav ul{
+  display:flex;
+  gap:18px;
+  list-style:none;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
 nav a:hover{color:#00ffff;}
+
+.menu{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+}
 
 /* HERO */
 .hero{
@@ -69,10 +86,11 @@ nav a:hover{color:#00ffff;}
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:0 20px;
 }
 
 .hero h1{
-  font-size:50px;
+  font-size:clamp(28px,6vw,50px);
   background:linear-gradient(90deg,#ff0033,#00ffff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -81,13 +99,12 @@ nav a:hover{color:#00ffff;}
 #typing{
   margin-top:20px;
   color:#aaa;
-  max-width:850px;
-  min-height:40px;
+  min-height:30px;
 }
 
 .btn{
-  margin-top:25px;
-  padding:14px 24px;
+  margin-top:20px;
+  padding:12px 22px;
   border:none;
   border-radius:30px;
   background:#ff0033;
@@ -97,7 +114,7 @@ nav a:hover{color:#00ffff;}
 
 /* SECTIONS */
 section{
-  padding:80px 60px;
+  padding:70px 20px;
 }
 
 h2{
@@ -110,22 +127,20 @@ p{
   color:#aaa;
   max-width:900px;
   margin:auto;
-  font-size:15px;
-  line-height:1.6;
+  font-size:14px;
 }
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  gap:15px;
   margin-top:30px;
 }
 
 .card{
-  padding:20px;
+  padding:15px;
   background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
   border-radius:12px;
   text-align:center;
   transition:0.3s;
@@ -136,34 +151,33 @@ p{
   background:rgba(255,0,51,0.2);
 }
 
-/* CHAT BOT */
+/* IMAGES */
+img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* CHAT */
 .bot{
   position:fixed;
   bottom:20px;
   right:20px;
-  width:65px;
-  height:65px;
+  width:60px;
+  height:60px;
   background:#ff0033;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
   cursor:pointer;
-  animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.15);}
-  100%{transform:scale(1);}
 }
 
 .chat{
   position:fixed;
-  bottom:100px;
-  right:20px;
-  width:320px;
+  bottom:90px;
+  right:10px;
+  width:95%;
+  max-width:320px;
   height:400px;
   background:#111;
   border-radius:12px;
@@ -195,43 +209,8 @@ p{
 
 .chat-input button{
   background:#ff0033;
-  color:#fff;
   border:none;
   padding:10px;
-}
-
-/* FAB */
-.fab-container{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.fab-main{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:#ff0033;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:26px;
-  cursor:pointer;
-}
-
-.fab-item{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  background:#111;
-  border:1px solid #333;
-  display:none;
-  align-items:center;
-  justify-content:center;
   color:#fff;
 }
 
@@ -239,69 +218,100 @@ p{
 @media (max-width:768px){
 
   nav{
-    padding:15px 20px;
-    flex-direction:column;
-    align-items:center;
+    padding:15px;
   }
 
   nav ul{
+    position:absolute;
+    top:60px;
+    right:0;
+    background:#000;
+    width:70%;
     flex-direction:column;
-    gap:10px;
-    margin-top:10px;
+    align-items:center;
+    display:none;
+    padding:20px;
   }
 
-  .hero{
-    padding:0 15px;
+  nav ul.active{
+    display:flex;
   }
 
-  .hero h1{
-    font-size:28px;
-  }
-
-  section{
-    padding:50px 20px;
-  }
-
-  h2{
-    font-size:22px;
-  }
-
-  .chat{
-    width:95%;
-    right:2.5%;
-    height:60%;
-  }
-
-  .btn{
-    width:80%;
-    max-width:250px;
+  .menu{
+    display:block;
   }
 }
-#fy-dashboard .card h3{
-  color:#ff0033;
+#clients img{
+  max-height:60px;
+  object-fit:contain;
   margin-bottom:10px;
+  filter:brightness(0) invert(1); /* white logos */
 }
 
-#revenue{
-  letter-spacing:2px;
-}
-/* IMAGE HOVER EFFECT */
-#events img{
+/* CONTACT ICON STYLE */
+.contact-card{
+  position:relative;
+  overflow:hidden;
   transition:0.4s;
 }
 
-#events .card:hover img{
-  transform:scale(1.05);
+.contact-card .icon{
+  font-size:40px;
+  margin-bottom:10px;
+  animation:popUp 1s ease;
 }
 
-/* FLOAT ANIMATION */
-#events .card{
-  animation:floatCard 6s ease-in-out infinite;
+/* POP-UP ANIMATION */
+@keyframes popUp{
+  0%{transform:scale(0);opacity:0;}
+  60%{transform:scale(1.2);opacity:1;}
+  100%{transform:scale(1);}
 }
 
-@keyframes floatCard{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
+/* HOVER EFFECT */
+.contact-card:hover{
+  transform:translateY(-8px) scale(1.03);
+  background:rgba(255,0,51,0.2);
+}
+
+/* ICON GLOW */
+.contact-card:hover .icon{
+  text-shadow:0 0 15px #ff0033;
+}
+
+/* MOBILE IMPROVEMENT */
+.contact-grid{
+  margin-top:20px;
+}
+.floating-contact{
+  position:fixed;
+  right:15px;
+  bottom:100px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:999;
+}
+
+.float-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#111;
+  border:1px solid #333;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+  animation:popUp 1s ease;
+}
+
+.float-btn:hover{
+  background:#ff0033;
+  transform:scale(1.1);
 }
 </style>
 </head>
@@ -314,6 +324,7 @@ p{
 
 <nav>
 <h2>BVNAB Intelligence</h2>
+<div class="menu" onclick="toggleMenu()">☰</div>
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
@@ -332,122 +343,111 @@ p{
 
 <section id="about">
 <h2>About Us</h2>
-<p>
-We transform manual and traditional industries into advanced Industry 4.0 smart systems, and prepare them for the future of Industry 5.0 with seamless human–AI collaboration.
-</p>
+<p>We transform manual industries into Industry 4.0 smart systems and future-ready Industry 5.0 ecosystems.</p>
 </section>
 
 <section id="services">
 <h2>Our Services</h2>
 <div class="grid">
-<div class="card">PLC Programming & SCADA Systems</div>
-<div class="card">Industrial Process Automation</div>
-<div class="card">AI Vision Inspection Systems</div>
-<div class="card">Static & Dynamic Test Benches</div>
-<div class="card">Industrial Robotics Integration</div>
+<div class="card">PLC Programming & SCADA</div>
+<div class="card">AI Vision Systems</div>
+<div class="card">Test Benches</div>
+<div class="card">Robotics</div>
+<div class="card">IIoT Solutions</div>
+<div class="card">Automation Software</div>
+<div class="card">Hydraulics & Pneumatics</div>
+<div class="card">OEM Projects</div>
 <div class="card">Automation Software Development</div>
-<div class="card">IIoT & Smart Factory Solutions</div>
-<div class="card">Hydraulic & Pneumatic Systems</div>
-<div class="card">Custom OEM Automation Projects</div>
 </div>
 </section>
 
 <section id="clients">
 <h2>Clients Served Across Pune</h2>
+
 <div class="grid">
-<div class="card">Gartech Equipment</div>
-<div class="card">Ducati Energia</div>
-<div class="card">Varroc Engineering</div>
-<div class="card">Premium Transmission</div>
+
+<div class="card">
+
+<p>Gartech Equipment</p>
+</div>
+
+<div class="card">
+
+<p>Ducati Energia</p>
+</div>
+
+<div class="card">
+
+<p>Varroc Engineering</p>
+</div>
+
+<div class="card">
+
+<p>Premium Transmission</p>
+</div>
+
 </div>
 </section>
+
 <section id="fy-dashboard">
 <h2>F.Y. 2026–2027 Work Projection</h2>
 
-<p>Live overview of execution, pipeline, and company status.</p>
-
-<!-- LIVE METERS -->
 <div class="grid">
-
-  <div class="card">
-    <h3>⚙️ Ongoing Execution</h3>
-    <h1 class="count" data-target="1">0</h1>
-  </div>
-
-  <div class="card">
-    <h3>📦 Projects in Pipeline</h3>
-    <h1 class="count" data-target="4">0</h1>
-  </div>
-
-  <div class="card">
-    <h3>✅ Projects Delivered</h3>
-    <h1 class="count" data-target="0">0</h1>
-  </div>
-
+<div class="card"><h3>Ongoing</h3><h1 class="count" data-target="1">0</h1></div>
+<div class="card"><h3>Pipeline</h3><h1 class="count" data-target="4">0</h1></div>
+<div class="card"><h3>Delivered</h3><h1 class="count" data-target="0">0</h1></div>
 </div>
-
-<!-- CURRENT MONTH STATUS -->
-<div class="card" style="margin-top:40px;">
+<div class="card" style="margin-top:30px;">
   <h3 style="color:#00ffff;">📅 Current Month: April 2026</h3>
   <p>Status: <b style="color:#ff0033;">Accepting New Projects</b></p>
   <p>Execution: 1 Project Running</p>
-  <p>Projects in Pipeline : 4</p>
+  <p>Projects in Pipeline: 4</p>
 </div>
-
-
-
+<br>
+<div class="card">
+  <h3>F.Y 2026-27 Revenue Till Date</h3>
+  <h1 class="count currency" data-target="00">₹00</h1>
+</div>
 </section>
+
 <section id="events">
-<h2>Company Events & Socials</h2>
-
-<p>Showcasing our activities, culture, collaborations, and continuous growth.</p>
-
+<h2>Events</h2>
 <div class="grid">
-
-  <!-- EDUCATIONAL / SOCIAL -->
-  <div class="card">
-    <h3>🎓 Educational & Social Events</h3>
-    <img src="1776072985004.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
-    <p>Workshops, training programs, and industrial awareness initiatives.</p>
-  </div>
-
-  <!-- HIRING / CULTURE -->
-  <div class="card">
-    <h3>👨‍💼 Hiring & Work Culture</h3>
-    <img src="1776072532671.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
-    <p>Team activities, hiring drives, and workplace culture moments.</p>
-  </div>
-
-  <!-- CORPORATE / MOU -->
-  <div class="card">
-    <h3>🤝 Corporate Collaborations</h3>
-    <img src="images/event3.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
-    <p>MoUs, partnerships, and strategic industrial collaborations.</p>
-  </div>
-
+<div class="card"><img src="1776072985004.jpg"><p>Education</p></div>
+<div class="card"><img src="1776072532671.jpg"><p>Culture</p></div>
+<div class="card"><img src="images/event3.jpg"><p>Corporate</p></div>
 </div>
 </section>
+
 <section id="contact">
 <h2>Contact Us</h2>
 <p>Reach out for automation solutions or collaborations.</p>
 
-<div class="grid">
-<div class="card">
-<h3>📞 Call</h3>
+<div class="grid contact-grid">
+
+<div class="card contact-card">
+<div class="icon">📞</div>
+<h3>Call Us</h3>
+<p>+91 9356368018</p>
 <a href="tel:+919356368018"><button class="btn">Call Now</button></a>
 </div>
 
-<div class="card">
-<h3>✉️ Email</h3>
+<div class="card contact-card">
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<p>sales@bvnab.in</p>
 <a href="mailto:sales@bvnab.in"><button class="btn">Send Email</button></a>
 </div>
 
-<div class="card">
-<h3>💬 WhatsApp</h3>
+<div class="card contact-card">
+<div class="icon">💬</div>
+<h3>WhatsApp</h3>
+<p>Instant Support</p>
 <a href="https://wa.me/919356368018" target="_blank">
 <button class="btn">Chat Now</button>
 </a>
 </div>
+
 </div>
 </section>
 
@@ -464,6 +464,10 @@ We transform manual and traditional industries into advanced Industry 4.0 smart 
 </div>
 
 <script>
+function toggleMenu(){
+  document.querySelector("nav ul").classList.toggle("active");
+}
+
 function toggleChat(){
   let c=document.getElementById("chat");
   c.style.display=c.style.display==="flex"?"none":"flex";
@@ -484,7 +488,7 @@ function reply(){
 }
 
 /* typing */
-const texts=["Smart Industry","AI Automation","Future Factories"];
+const texts=["Smart Industry","AI Automation","Future Factory"];
 let i=0,j=0;
 
 function type(){
@@ -495,41 +499,34 @@ function type(){
   setTimeout(type,70);
 }
 type();
-// UNIVERSAL COUNTER (works for all numbers)
+
+/* COUNTER */
 const counters = document.querySelectorAll('.count');
 
 counters.forEach(counter => {
-
   const target = +counter.getAttribute('data-target');
   let count = 0;
-
-  const speed = target / 100; // controls animation speed
+  const speed = target / 100;
 
   function update(){
     if(count < target){
       count += speed;
-      counter.innerText = counter.innerText.includes("₹")
-        ? "₹" + Math.floor(count).toLocaleString()
-        : Math.floor(count);
-
-      setTimeout(update, 20); // ~2 sec animation
+      counter.innerText = Math.floor(count);
+      setTimeout(update,20);
     } else {
-      counter.innerText = counter.innerText.includes("₹")
-        ? "₹" + target.toLocaleString()
-        : target;
+      counter.innerText = target;
     }
   }
-
-  // detect ₹ automatically
-  if(counter.innerText.includes("₹")){
-    counter.innerText = "₹0";
-  } else {
-    counter.innerText = "0";
-  }
-
   update();
 });
-</script>
 
+</script>
+<div class="floating-contact">
+
+<a href="tel:+919356368018" class="float-btn">📞</a>
+<a href="mailto:sales@bvnab.in" class="float-btn">✉️</a>
+<a href="https://wa.me/919356368018" class="float-btn" target="_blank">💬</a>
+
+</div>
 </body>
 </html>
