@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BVNAB Intelligence | Industry 4.0 → 5.0 AI Automation</title>
+<title>BVNAB Intelligence</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -87,7 +87,7 @@ nav a:hover{color:#00ffff;}
 
 .btn{
   margin-top:25px;
-  padding:12px 28px;
+  padding:14px 24px;
   border:none;
   border-radius:30px;
   background:#ff0033;
@@ -110,6 +110,8 @@ p{
   color:#aaa;
   max-width:900px;
   margin:auto;
+  font-size:15px;
+  line-height:1.6;
 }
 
 /* GRID */
@@ -132,48 +134,6 @@ p{
 .card:hover{
   transform:scale(1.05);
   background:rgba(255,0,51,0.2);
-}
-
-/* ROADMAP */
-.timeline{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
-.step{
-  text-align:center;
-  flex:1;
-  min-width:150px;
-}
-
-.dot{
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  border:2px solid #00ffff;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#00ffff;
-}
-
-/* CLIENTS */
-.client-box{
-  background:rgba(255,255,255,0.05);
-  padding:15px;
-  margin:10px;
-  border-radius:10px;
-  text-align:center;
-}
-
-/* CONTACT */
-.contact{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
 }
 
 /* CHAT BOT */
@@ -209,7 +169,6 @@ p{
   border-radius:12px;
   display:none;
   flex-direction:column;
-  overflow:hidden;
 }
 
 .chat-header{
@@ -241,201 +200,7 @@ p{
   padding:10px;
 }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  background:#000;
-  color:#777;
-}
-
-#stats .card{
-  text-align:center;
-  padding:30px;
-}
-
-#stats h1{
-  font-size:45px;
-  color:#00ffff;
-  margin-bottom:10px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="bg"></div>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-
-<!-- NAV -->
-<nav>
-<h2>BVNAB INTELLIGENCE</h2>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-
-<li><a href="#clients">Clients</a></li>
-<li><a href="#collab">Collaboration</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-<h1>Tradiational → Industry 4.0 → 5.0 AI Automation</h1>
-<div id="typing"></div>
-<button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-Explore Solutions
-</button>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-<h2>About Us</h2>
-<p>
-We transform traditional industries into Industry 4.0 smart factories and prepare them for Industry 5.0 AI-human collaboration systems.
-</p>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-<h2>Services</h2>
-<div class="grid">
-<div class="card">AI Vision</div>
-<div class="card">PLC / SCADA</div>
-<div class="card">Robotics</div>
-<div class="card">Hydraulics</div>
-<div class="card">Pneumatics</div>
-<div class="card">IIoT Systems</div>
-</div>
-</section>
-<!-- STATS / PROJECTION METER -->
-
-
-
-<!-- CLIENTS -->
-<section id="clients">
-<h2>Our Clients</h2>
-<div class="grid">
-<div class="client-box">Manufacturing Industry</div>
-<div class="client-box">Poultry Automation</div>
-<div class="client-box">Automobile Sector</div>
-<div class="client-box">Custom OEM Projects</div>
-</div>
-</section>
-
-<!-- CHAT BOT -->
-<div class="bot" onclick="toggleChat()">🤖</div>
-
-<div class="chat" id="chat">
-<div class="chat-header">BVNAB AI Guide</div>
-<div class="chat-body" id="chatBody">
-Hi 👋 I can explain:<br>
-• Manual Industry<br>
-• Industry 4.0<br>
-• Industry 5.0
-</div>
-<div class="chat-input">
-<input id="msg" placeholder="Ask...">
-<button onclick="reply()">Send</button>
-</div>
-</div>
-
-
-  <footer style="background:#000;padding:40px 20px;color:#ccc;">
-
-  <!-- COMPANY NAME -->
-  <div style="text-align:center;margin-bottom:20px;">
-    <h2 style="color:#ff0033;margin-bottom:5px;">BVNAB INTELLIGENCE</h2>
-    <p style="font-size:14px;">Industry 4.0 → Industry 5.0 AI Automation Company</p>
-  </div>
-
-  
-<script>
-
-/* CHAT TOGGLE */
-function toggleChat(){
-  let c=document.getElementById("chat");
-  c.style.display=c.style.display==="flex"?"none":"flex";
-}
-
-/* CHAT LOGIC */
-function reply(){
-  let msg=document.getElementById("msg");
-  let body=document.getElementById("chatBody");
-
-  let text=msg.value.toLowerCase();
-  let res="";
-
-  if(text.includes("manual")){
-    res="Manual = Traditional industries without automation.";
-  }
-  else if(text.includes("4")){
-    res="Industry 4.0 = Smart automation using AI, PLC, IoT.";
-  }
-  else if(text.includes("5")){
-    res="Industry 5.0 = Human + AI collaboration systems.";
-  }
-  else{
-    res="Ask me about Manual, 4.0 or 5.0.";
-  }
-
-  body.innerHTML += "<br><br><b>You:</b> "+msg.value+"<br><b>AI:</b> "+res;
-  msg.value="";
-}
-
-/* TYPING */
-const texts=[
-"Transforming Traditional Industries...",
-"Upgrading to Industry 4.0...",
-"Preparing for Industry 5.0...",
-"Human + AI Industrial Future..."
-];
-
-let i=0,j=0;
-
-function type(){
-  let t=texts[i];
-  document.getElementById("typing").innerHTML=t.substring(0,j);
-
-  j++;
-  if(j>t.length){
-    j=0;
-    i=(i+1)%texts.length;
-  }
-
-  setTimeout(type,70);
-}
-
-type();
-
-// COUNTER ANIMATION
-const counters = document.querySelectorAll('.count');
-
-counters.forEach(counter => {
-  counter.innerText = "0";
-
-  const updateCounter = () => {
-    const target = +counter.getAttribute('data-target');
-    const c = +counter.innerText;
-
-    const increment = target / 80;
-
-    if(c < target){
-      counter.innerText = Math.ceil(c + increment);
-      setTimeout(updateCounter, 30);
-    } else {
-      counter.innerText = target;
-    }
-  };
-
-  updateCounter();
-});
-</script>
-<!-- FLOATING CONTACT BUTTONS -->
-
-<style>
+/* FAB */
 .fab-container{
   position:fixed;
   bottom:20px;
@@ -443,10 +208,8 @@ counters.forEach(counter => {
   display:flex;
   flex-direction:column;
   gap:12px;
-  z-index:9999;
 }
 
-/* MAIN BUTTON */
 .fab-main{
   width:60px;
   height:60px;
@@ -458,84 +221,188 @@ counters.forEach(counter => {
   color:#fff;
   font-size:26px;
   cursor:pointer;
-  animation:pulse 1.5s infinite;
 }
 
-/* SMALL BUTTONS */
 .fab-item{
   width:50px;
   height:50px;
   border-radius:50%;
   background:#111;
   border:1px solid #333;
-  display:flex;
+  display:none;
   align-items:center;
   justify-content:center;
   color:#fff;
-  cursor:pointer;
-  position:relative;
-  transition:0.3s;
 }
 
-.fab-item:hover{
-  transform:scale(1.1);
-}
+/* MOBILE */
+@media (max-width:768px){
 
-/* TOOLTIP */
-.fab-item span{
-  position:absolute;
-  left:60px;
-  background:#000;
-  color:#fff;
-  padding:6px 10px;
-  border-radius:6px;
-  font-size:12px;
-  white-space:nowrap;
-  display:none;
-  border:1px solid #333;
-}
+  nav{
+    padding:15px 20px;
+    flex-direction:column;
+    align-items:center;
+  }
 
-.fab-item:hover span{
-  display:block;
+  nav ul{
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+  }
+
+  .hero{
+    padding:0 15px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  section{
+    padding:50px 20px;
+  }
+
+  h2{
+    font-size:22px;
+  }
+
+  .chat{
+    width:95%;
+    right:2.5%;
+    height:60%;
+  }
+
+  .btn{
+    width:80%;
+    max-width:250px;
+  }
 }
 </style>
+</head>
 
-<div class="fab-container">
+<body>
 
-  <!-- MAIN ICON -->
-  <div class="fab-main" onclick="toggleFab()">⚡</div>
+<div class="bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-  <!-- CALL -->
-  <a href="tel:+919356368018" class="fab-item" id="callBtn">
-    📞
-    <span>Call: +91 9356368018</span>
-  </a>
+<nav>
+<h2>BVNAB Intelligence</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#clients">Clients</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-  <!-- EMAIL -->
-  <a href="mailto:sales@bvnab.in" class="fab-item" id="mailBtn">
-    ✉️
-    <span>Email: sales@bvnab.in</span>
-  </a>
+<section class="hero">
+<h1>Industry 4.0 → 5.0 AI Automation</h1>
+<div id="typing"></div>
+<button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore</button>
+</section>
 
-  <!-- WHATSAPP (optional future ready) -->
-  <a href="https://wa.me/919356368018" target="_blank" class="fab-item">
-    💬
-    <span>WhatsApp Chat</span>
-  </a>
+<section id="about">
+<h2>About Us</h2>
+<p>
+We transform manual and traditional industries into advanced Industry 4.0 smart systems, and prepare them for the future of Industry 5.0 with seamless human–AI collaboration.
+</p>
+</section>
 
+<section id="services">
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card">PLC Programming & SCADA Systems</div>
+<div class="card">Industrial Process Automation</div>
+<div class="card">AI Vision Inspection Systems</div>
+<div class="card">Static & Dynamic Test Benches</div>
+<div class="card">Industrial Robotics Integration</div>
+<div class="card">Automation Software Development</div>
+<div class="card">IIoT & Smart Factory Solutions</div>
+<div class="card">Hydraulic & Pneumatic Systems</div>
+<div class="card">Custom OEM Automation Projects</div>
+</div>
+</section>
+
+<section id="clients">
+<h2>Clients Served Across Pune</h2>
+<div class="grid">
+<div class="card">Gartech Equipment</div>
+<div class="card">Ducati Energia</div>
+<div class="card">Varroc Engineering</div>
+<div class="card">Premium Transmission</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Reach out for automation solutions or collaborations.</p>
+
+<div class="grid">
+<div class="card">
+<h3>📞 Call</h3>
+<a href="tel:+919356368018"><button class="btn">Call Now</button></a>
+</div>
+
+<div class="card">
+<h3>✉️ Email</h3>
+<a href="mailto:sales@bvnab.in"><button class="btn">Send Email</button></a>
+</div>
+
+<div class="card">
+<h3>💬 WhatsApp</h3>
+<a href="https://wa.me/919356368018" target="_blank">
+<button class="btn">Chat Now</button>
+</a>
+</div>
+</div>
+</section>
+
+<!-- CHAT -->
+<div class="bot" onclick="toggleChat()">🤖</div>
+
+<div class="chat" id="chat">
+<div class="chat-header">AI Guide</div>
+<div class="chat-body" id="chatBody">Ask about Industry 4.0 or 5.0</div>
+<div class="chat-input">
+<input id="msg">
+<button onclick="reply()">Send</button>
+</div>
 </div>
 
 <script>
-function toggleFab(){
-  let items=document.querySelectorAll('.fab-item');
-  items.forEach(el=>{
-    if(el.style.display==="none"){
-      el.style.display="flex";
-    }else{
-      el.style.display="flex";
-    }
-  });
+function toggleChat(){
+  let c=document.getElementById("chat");
+  c.style.display=c.style.display==="flex"?"none":"flex";
 }
+
+function reply(){
+  let msg=document.getElementById("msg");
+  let body=document.getElementById("chatBody");
+
+  let text=msg.value.toLowerCase();
+  let res="Ask about 4.0 or 5.0";
+
+  if(text.includes("4")) res="Industry 4.0 = Automation + AI";
+  if(text.includes("5")) res="Industry 5.0 = Human + AI";
+
+  body.innerHTML += "<br><b>You:</b> "+msg.value+"<br><b>AI:</b> "+res;
+  msg.value="";
+}
+
+/* typing */
+const texts=["Smart Industry","AI Automation","Future Factories"];
+let i=0,j=0;
+
+function type(){
+  let t=texts[i];
+  document.getElementById("typing").innerHTML=t.substring(0,j);
+  j++;
+  if(j>t.length){j=0;i=(i+1)%texts.length;}
+  setTimeout(type,70);
+}
+type();
 </script>
+
 </body>
 </html>
