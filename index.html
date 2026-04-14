@@ -285,6 +285,24 @@ p{
 #revenue{
   letter-spacing:2px;
 }
+/* IMAGE HOVER EFFECT */
+#events img{
+  transition:0.4s;
+}
+
+#events .card:hover img{
+  transform:scale(1.05);
+}
+
+/* FLOAT ANIMATION */
+#events .card{
+  animation:floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
 </style>
 </head>
 
@@ -301,6 +319,7 @@ p{
 <li><a href="#services">Services</a></li>
 <li><a href="#clients">Clients</a></li>
 <li><a href="#fy-dashboard">F.Y Dashboard</a></li>
+<li><a href="#events">Events</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
@@ -377,6 +396,36 @@ We transform manual and traditional industries into advanced Industry 4.0 smart 
 
 
 
+</section>
+<section id="events">
+<h2>Company Events & Socials</h2>
+
+<p>Showcasing our activities, culture, collaborations, and continuous growth.</p>
+
+<div class="grid">
+
+  <!-- EDUCATIONAL / SOCIAL -->
+  <div class="card">
+    <h3>🎓 Educational & Social Events</h3>
+    <img src="1776072985004.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
+    <p>Workshops, training programs, and industrial awareness initiatives.</p>
+  </div>
+
+  <!-- HIRING / CULTURE -->
+  <div class="card">
+    <h3>👨‍💼 Hiring & Work Culture</h3>
+    <img src="1776072532671.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
+    <p>Team activities, hiring drives, and workplace culture moments.</p>
+  </div>
+
+  <!-- CORPORATE / MOU -->
+  <div class="card">
+    <h3>🤝 Corporate Collaborations</h3>
+    <img src="images/event3.jpg" style="width:100%;border-radius:10px;margin-top:10px;">
+    <p>MoUs, partnerships, and strategic industrial collaborations.</p>
+  </div>
+
+</div>
 </section>
 <section id="contact">
 <h2>Contact Us</h2>
