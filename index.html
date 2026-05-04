@@ -5,619 +5,130 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BVNAB Intelligence</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-  background:#0a0a0a;
-  color:#fff;
+body {
+    margin: 0;
+    background: #0a0a0a;
+    color: white;
+    font-family: Arial;
+    overflow: hidden;
 }
 
-/* BACKGROUND */
-.bg{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:radial-gradient(circle,#111,#000);
-  z-index:-2;
+/* CENTER SCENE */
+.scene {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
 }
 
-.orb{
-  position:absolute;
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  filter:blur(70px);
-  opacity:0.4;
-  animation:float 8s infinite;
+/* CUBE */
+.cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 10s infinite linear;
 }
 
-.orb1{background:#ff0033;top:10%;left:10%;}
-.orb2{background:#00ffff;bottom:10%;right:10%;}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-40px);}
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(209,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    font-weight: bold;
 }
 
-/* NAVBAR */
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 40px;
-  position:fixed;
-  width:100%;
-  top:0;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(10px);
-  z-index:1000;
+/* Cube faces */
+.front  { transform: rotateY(0deg) translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+/* Rotation */
+@keyframes rotate {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
 }
 
-nav h2{color:#ff0033;}
-
-nav ul{
-  display:flex;
-  gap:18px;
-  list-style:none;
+/* FLOATING TEXT PANELS */
+.panel {
+    position: absolute;
+    color: #ff4d4d;
+    font-size: 18px;
+    opacity: 0;
+    animation: popup 10s infinite;
 }
 
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
+.panel:nth-child(1) { top: 10%; left: 10%; animation-delay: 1s; }
+.panel:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+.panel:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 3s; }
+.panel:nth-child(4) { bottom: 10%; right: 15%; animation-delay: 4s; }
+.panel:nth-child(5) { top: 40%; left: 5%; animation-delay: 5s; }
+.panel:nth-child(6) { top: 50%; right: 5%; animation-delay: 6s; }
+
+@keyframes popup {
+    0% { opacity: 0; transform: scale(0.5); }
+    20% { opacity: 1; transform: scale(1); }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
-nav a:hover{color:#00ffff;}
-
-.menu{
-  display:none;
-  font-size:24px;
-  cursor:pointer;
+/* BRAND TEXT */
+.brand {
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    width: 100%;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:0 20px;
+.brand h1 {
+    margin: 0;
+    color: #d10000;
 }
 
-.hero h1{
-  font-size:clamp(28px,6vw,50px);
-  background:linear-gradient(90deg,#ff0033,#00ffff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-#typing{
-  margin-top:20px;
-  color:#aaa;
-  min-height:30px;
-}
-
-.btn{
-  margin-top:20px;
-  padding:12px 22px;
-  border:none;
-  border-radius:30px;
-  background:#ff0033;
-  color:#fff;
-  cursor:pointer;
-}
-
-/* SECTIONS */
-section{
-  padding:70px 20px;
-}
-
-h2{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-p{
-  text-align:center;
-  color:#aaa;
-  max-width:900px;
-  margin:auto;
-  font-size:14px;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:30px;
-}
-
-.card{
-  padding:15px;
-  background:rgba(255,255,255,0.05);
-  border-radius:12px;
-  text-align:center;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:scale(1.05);
-  background:rgba(255,0,51,0.2);
-}
-
-/* IMAGES */
-img{
-  width:100%;
-  border-radius:10px;
-}
-
-/* CHAT */
-.bot{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:60px;
-  height:60px;
-  background:#ff0033;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-}
-
-.chat{
-  position:fixed;
-  bottom:90px;
-  right:10px;
-  width:95%;
-  max-width:320px;
-  height:400px;
-  background:#111;
-  border-radius:12px;
-  display:none;
-  flex-direction:column;
-}
-
-.chat-header{
-  background:#ff0033;
-  padding:10px;
-  text-align:center;
-}
-
-.chat-body{
-  flex:1;
-  padding:10px;
-  font-size:13px;
-  overflow-y:auto;
-}
-
-.chat-input{
-  display:flex;
-}
-
-.chat-input input{
-  flex:1;
-  padding:10px;
-}
-
-.chat-input button{
-  background:#ff0033;
-  border:none;
-  padding:10px;
-  color:#fff;
-}
-
-/* MOBILE */
-@media (max-width:768px){
-
-  nav{
-    padding:15px;
-  }
-
-  nav ul{
-    position:absolute;
-    top:60px;
-    right:0;
-    background:#000;
-    width:70%;
-    flex-direction:column;
-    align-items:center;
-    display:none;
-    padding:20px;
-  }
-
-  nav ul.active{
-    display:flex;
-  }
-
-  .menu{
-    display:block;
-  }
-}
-#clients img{
-  max-height:60px;
-  object-fit:contain;
-  margin-bottom:10px;
-  filter:brightness(0) invert(1); /* white logos */
-}
-
-/* CONTACT ICON STYLE */
-.contact-card{
-  position:relative;
-  overflow:hidden;
-  transition:0.4s;
-}
-
-.contact-card .icon{
-  font-size:40px;
-  margin-bottom:10px;
-  animation:popUp 1s ease;
-}
-
-/* POP-UP ANIMATION */
-@keyframes popUp{
-  0%{transform:scale(0);opacity:0;}
-  60%{transform:scale(1.2);opacity:1;}
-  100%{transform:scale(1);}
-}
-
-/* HOVER EFFECT */
-.contact-card:hover{
-  transform:translateY(-8px) scale(1.03);
-  background:rgba(255,0,51,0.2);
-}
-
-/* ICON GLOW */
-.contact-card:hover .icon{
-  text-shadow:0 0 15px #ff0033;
-}
-
-/* MOBILE IMPROVEMENT */
-.contact-grid{
-  margin-top:20px;
-}
-.floating-contact{
-  position:fixed;
-  right:15px;
-  bottom:100px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:999;
-}
-
-.float-btn{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  background:#111;
-  border:1px solid #333;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  color:#fff;
-  text-decoration:none;
-  transition:0.3s;
-  animation:popUp 1s ease;
-}
-
-.float-btn:hover{
-  background:#ff0033;
-  transform:scale(1.1);
-}
-  /* CAREER FLOAT BUTTON */
-.career-float{
-  position:fixed;
-  left:15px;
-  bottom:100px;
-  width:55px;
-  height:55px;
-  background:#00ffff;
-  color:#000;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  cursor:pointer;
-  z-index:999;
-  animation:popUp 1s ease;
-}
-
-/* CAREER BOX */
-.career-box{
-  position:fixed;
-  left:10px;
-  bottom:170px;
-  width:90%;
-  max-width:300px;
-  background:#111;
-  border-radius:12px;
-  display:none;
-  flex-direction:column;
-  overflow:hidden;
-  z-index:999;
-}
-
-.career-header{
-  background:#00ffff;
-  color:#000;
-  padding:10px;
-  text-align:center;
-  font-weight:600;
-}
-
-.career-body{
-  padding:12px;
-}
-
-.career-role{
-  background:rgba(255,255,255,0.05);
-  padding:10px;
-  border-radius:10px;
-  margin-bottom:10px;
-  text-align:center;
-}
-
-.career-role h4{
-  margin-bottom:5px;
-}
-
-.career-role:hover{
-  background:rgba(0,255,255,0.2);
-  transform:scale(1.03);
+.brand p {
+    margin: 5px 0 0;
+    color: #aaa;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
+<div class="scene">
 
-<nav>
-<h2>BVNAB Intelligence</h2>
-<div class="menu" onclick="toggleMenu()">☰</div>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#clients">Clients</a></li>
-<li><a href="#fy-dashboard">F.Y Dashboard</a></li>
-<li><a href="#events">Events</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-
-<section class="hero">
-<h1>Industry 4.0 → 5.0 AI Automation</h1>
-<div id="typing"></div>
-<button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore</button>
-</section>
-
-<section id="about">
-<h2>About Us</h2>
-<p>We transform manual industries into Industry 4.0 smart systems and future-ready Industry 5.0 ecosystems.</p>
-</section>
-
-<section id="services">
-<h2>Our Services</h2>
-<div class="grid">
-<div class="card">PLC Programming & SCADA</div>
-<div class="card">AI Vision Systems</div>
-<div class="card">Test Benches</div>
-<div class="card">Robotics</div>
-<div class="card">IIoT Solutions</div>
-<div class="card">Automation Software</div>
-<div class="card">Hydraulics & Pneumatics</div>
-<div class="card">OEM Projects</div>
-
-</div>
-</section>
-
-<section id="clients">
-<h2>Clients Served Across Pune</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<p>Gartech Equipment</p>
-</div>
-
-<div class="card">
-
-<p>Ducati Energia</p>
-</div>
-
-<div class="card">
-
-<p>Varroc Engineering</p>
-</div>
-
-<div class="card">
-
-<p>Premium Transmission</p>
-</div>
-
-</div>
-</section>
-
-<section id="fy-dashboard">
-<h2>F.Y. 2026–2027 Work Projection</h2>
-
-<div class="grid">
-<div class="card"><h3>Ongoing</h3><h1 class="count" data-target="1">0</h1></div>
-<div class="card"><h3>Pipeline</h3><h1 class="count" data-target="4">0</h1></div>
-<div class="card"><h3>Delivered</h3><h1 class="count" data-target="0">0</h1></div>
-</div>
-<div class="card" style="margin-top:30px;">
-  <h3 style="color:#00ffff;">📅 Current Month: April 2026</h3>
-  <p>Status: <b style="color:#ff0033;">Accepting New Projects</b></p>
-  <p>Execution: 1 Project Running</p>
-  <p>Projects in Pipeline: 4</p>
-</div>
-<br>
-
-</section>
-<!-- CAREER FLOATING -->
-<div class="career-float" onclick="toggleCareer()">💼</div>
-
-<div class="career-box" id="careerBox">
-  <div class="career-header">Careers @ BVNAB</div>
-
-  <div class="career-body">
-
-    <div class="career-role">
-      <h4>Design Intern</h4>
-      <p>Internship | Openings: 02</p>
-      <a href="mailto:sales@bvnab.in?subject=Apply for Design Intern">
-        <button class="btn">Apply Now</button>
-      </a>
+    <div class="cube">
+        <div class="face front">Automation</div>
+        <div class="face back">AI Vision</div>
+        <div class="face right">Software</div>
+        <div class="face left">3D Printing</div>
+        <div class="face top">R&D</div>
+        <div class="face bottom">Training</div>
     </div>
 
-    <div class="career-role">
-      <h4>Robotics Intern</h4>
-      <p>Internship | Openings: 01</p>
-      <a href="mailto:sales@bvnab.in?subject=Apply for Robotics Intern">
-        <button class="btn">Apply Now</button>
-      </a>
-    </div>
-
-    <p style="margin-top:10px;font-size:12px;color:#aaa;">
-      📩 Send your resume directly to email
-    </p>
-
-  </div>
-</div>
-<section id="events">
-<h2>Events</h2>
-<div class="grid">
-<div class="card"><img src="1776072985004.jpg"><p>Education</p></div>
-<div class="card"><img src="1776072532671.jpg"><p>Culture</p></div>
-<div class="card"><img src="images/event3.jpg"><p>Corporate</p></div>
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<p>Reach out for automation solutions or collaborations.</p>
-
-<div class="grid contact-grid">
-
-<div class="card contact-card">
-<div class="icon">📞</div>
-<h3>Call Us</h3>
-<p>+91 9356368018</p>
-<a href="tel:+919356368018"><button class="btn">Call Now</button></a>
-</div>
-
-<div class="card contact-card">
-<div class="icon">✉️</div>
-<h3>Email</h3>
-<p>sales@bvnab.in</p>
-<a href="mailto:sales@bvnab.in"><button class="btn">Send Email</button></a>
-</div>
-
-<div class="card contact-card">
-<div class="icon">💬</div>
-<h3>WhatsApp</h3>
-<p>Instant Support</p>
-<a href="https://wa.me/919356368018" target="_blank">
-<button class="btn">Chat Now</button>
-</a>
-</div>
+    <!-- Floating Panels -->
+    <div class="panel">Industrial Automation</div>
+    <div class="panel">AI Vision Systems</div>
+    <div class="panel">Custom Software</div>
+    <div class="panel">3D Printing</div>
+    <div class="panel">R&D</div>
+    <div class="panel">Training & Labs</div>
 
 </div>
-</section>
 
-<!-- CHAT -->
-<div class="bot" onclick="toggleChat()">🤖</div>
-
-<div class="chat" id="chat">
-<div class="chat-header">AI Guide</div>
-<div class="chat-body" id="chatBody">Ask about Industry 4.0 or 5.0</div>
-<div class="chat-input">
-<input id="msg">
-<button onclick="reply()">Send</button>
-</div>
+<div class="brand">
+    <h1>BVNAB Intelligence</h1>
+    <p>Engineering Intelligence for Industry 4.0</p>
 </div>
 
-<script>
-function toggleMenu(){
-  document.querySelector("nav ul").classList.toggle("active");
-}
-
-function toggleChat(){
-  let c=document.getElementById("chat");
-  c.style.display=c.style.display==="flex"?"none":"flex";
-}
-
-function reply(){
-  let msg=document.getElementById("msg");
-  let body=document.getElementById("chatBody");
-
-  let text=msg.value.toLowerCase();
-  let res="Ask about 4.0 or 5.0";
-
-  if(text.includes("4")) res="Industry 4.0 = Automation + AI";
-  if(text.includes("5")) res="Industry 5.0 = Human + AI";
-
-  body.innerHTML += "<br><b>You:</b> "+msg.value+"<br><b>AI:</b> "+res;
-  msg.value="";
-}
-
-/* typing */
-const texts=["Smart Industry","AI Automation","Future Factory"];
-let i=0,j=0;
-
-function type(){
-  let t=texts[i];
-  document.getElementById("typing").innerHTML=t.substring(0,j);
-  j++;
-  if(j>t.length){j=0;i=(i+1)%texts.length;}
-  setTimeout(type,70);
-}
-type();
-
-/* COUNTER */
-const counters = document.querySelectorAll('.count');
-
-counters.forEach(counter => {
-  const target = +counter.getAttribute('data-target');
-  let count = 0;
-  const speed = target / 100;
-
-  function update(){
-    if(count < target){
-      count += speed;
-      counter.innerText = Math.floor(count);
-      setTimeout(update,20);
-    } else {
-      counter.innerText = target;
-    }
-  }
-  update();
-});
-function toggleCareer(){
-  let box = document.getElementById("careerBox");
-  box.style.display = box.style.display === "flex" ? "none" : "flex";
-}
-</script>
-<div class="floating-contact">
-
-<a href="tel:+919356368018" class="float-btn">📞</a>
-<a href="mailto:sales@bvnab.in" class="float-btn">✉️</a>
-<a href="https://wa.me/919356368018" class="float-btn" target="_blank">💬</a>
-
-</div>
 </body>
 </html>
